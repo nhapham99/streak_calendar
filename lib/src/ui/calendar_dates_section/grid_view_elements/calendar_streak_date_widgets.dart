@@ -1,5 +1,6 @@
 import 'package:clean_calendar/src/models/calendar_properties.dart';
 import 'package:clean_calendar/src/models/dates_properties.dart';
+import 'package:clean_calendar/src/size_provider.dart';
 import 'package:clean_calendar/src/utils/get_end_weekday_from_start_weekday.dat.dart';
 import 'package:clean_calendar/src/utils/get_suitable_dates_on_tap.dart';
 import 'package:clean_calendar/src/utils/get_suitable_dates_properties.dart';
@@ -82,13 +83,15 @@ class CalendarStreakStartDenseDate extends StatelessWidget {
                             color: datesBackgroundColor,
                           ),
                           child: Container(
-                            width: 40 / 2,
+                            width:
+                                DateSectionSizeProvider.instance.widthOfDate /
+                                    2,
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: 40,
+                      width: DateSectionSizeProvider.instance.widthOfDate,
                       child: Container(
                         margin: const EdgeInsets.all(4.0),
                         child: Container(
@@ -253,13 +256,15 @@ class CalendarStreakStartDenseSplashDate extends StatelessWidget {
                               color: datesBackgroundColor,
                             ),
                             child: Container(
-                              width: 40 / 2,
+                              width:
+                                  DateSectionSizeProvider.instance.widthOfDate /
+                                      2,
                             ),
                           ),
                         ),
                       ),
                       SizedBox(
-                        width: 40,
+                        width: DateSectionSizeProvider.instance.widthOfDate,
                         child: Container(
                           margin: const EdgeInsets.all(4.0),
                           child: Container(
@@ -526,7 +531,7 @@ class CalendarStreakBetweenDenseSplashDate extends StatelessWidget {
                   onTap: disable ? null : dateSuitableDatesOnTap,
                   child: Container(
                     margin: const EdgeInsets.only(top: 4, bottom: 4),
-                    width: 40,
+                    width: DateSectionSizeProvider.instance.widthOfDate,
                     child: Container(
                       //Replace here with Ink after this fix https://github.com/flutter/flutter/issues/73315
                       decoration: BoxDecoration(
@@ -792,13 +797,15 @@ class CalendarStreakEndDenseDate extends StatelessWidget {
                             color: datesBackgroundColor,
                           ),
                           child: Container(
-                            width: 40 / 2,
+                            width:
+                                DateSectionSizeProvider.instance.widthOfDate /
+                                    2,
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: 40,
+                      width: DateSectionSizeProvider.instance.widthOfDate,
                       child: Container(
                         margin: const EdgeInsets.all(4.0),
                         child: Container(
@@ -961,13 +968,15 @@ class CalendarStreakEndDenseSplashDate extends StatelessWidget {
                               color: datesBackgroundColor,
                             ),
                             child: Container(
-                              width: 40 / 2,
+                              width:
+                                  DateSectionSizeProvider.instance.widthOfDate /
+                                      2,
                             ),
                           ),
                         ),
                       ),
                       SizedBox(
-                        width: 40,
+                        width: DateSectionSizeProvider.instance.widthOfDate,
                         child: Container(
                           margin: const EdgeInsets.all(4.0),
                           child: Container(
@@ -1156,7 +1165,7 @@ class CalendarStreakSingleDenseDate extends StatelessWidget {
                   child: SizedBox(),
                 ),
                 SizedBox(
-                  width: 40,
+                  width: DateSectionSizeProvider.instance.widthOfDate,
                   child: Container(
                     margin: const EdgeInsets.all(4.0),
                     child: Container(
@@ -1265,7 +1274,7 @@ class CalendarStreakSingleDenseSplashDate extends StatelessWidget {
                   splashFactory: InkRipple.splashFactory,
                   onTap: dateSuitableDatesOnTap,
                   child: SizedBox(
-                    width: 40,
+                    width: DateSectionSizeProvider.instance.widthOfDate,
                     child: Container(
                       margin: const EdgeInsets.all(4.0),
                       child: Container(

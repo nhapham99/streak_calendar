@@ -1,4 +1,5 @@
 import 'package:clean_calendar/src/models/calendar_properties.dart';
+import 'package:clean_calendar/src/size_provider.dart';
 import 'package:clean_calendar/src/state/page_controller.dart';
 import 'package:clean_calendar/src/ui/calendar_dates_section/gridview_elements.dart';
 import 'package:clean_calendar/src/utils.dart';
@@ -138,10 +139,13 @@ class NoSelectionMonthViewGridViewBuilder extends StatelessWidget {
       child: GridView.custom(
         // shrinkWrap: true,
         physics: const ClampingScrollPhysics(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           childAspectRatio: 1,
           crossAxisCount: 7,
-          mainAxisExtent: 40,
+          mainAxisExtent: DateSectionSizeProvider.instance.maxHeightOfDate(
+            calendarProperties.calendarDatesSectionMaxHeight,
+            calendarProperties.datePickerCalendarView,
+          ),
         ),
 
         childrenDelegate: SliverChildListDelegate(
@@ -185,10 +189,13 @@ class DateSingleMultipleSelectionMonthViewGridViewBuilder
         .toList();
 
     return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         childAspectRatio: 1,
         crossAxisCount: 7,
-        mainAxisExtent: 40,
+        mainAxisExtent: DateSectionSizeProvider.instance.maxHeightOfDate(
+          calendarProperties.calendarDatesSectionMaxHeight,
+          calendarProperties.datePickerCalendarView,
+        ),
       ),
       itemCount: 42,
       physics: const NeverScrollableScrollPhysics(),
@@ -224,10 +231,13 @@ class NoSelectionWeekViewGridViewBuilder extends StatelessWidget {
       child: GridView.custom(
         // shrinkWrap: true,
         physics: const ClampingScrollPhysics(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           childAspectRatio: 1,
           crossAxisCount: 7,
-          mainAxisExtent: 40,
+          mainAxisExtent: DateSectionSizeProvider.instance.maxHeightOfDate(
+            calendarProperties.calendarDatesSectionMaxHeight,
+            calendarProperties.datePickerCalendarView,
+          ),
         ),
 
         childrenDelegate: SliverChildListDelegate(
@@ -271,10 +281,13 @@ class DateSingleMultipleSelectionWeekViewGridViewBuilder
         .toList();
 
     return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         childAspectRatio: 1,
         crossAxisCount: 7,
-        mainAxisExtent: 40,
+        mainAxisExtent: DateSectionSizeProvider.instance.maxHeightOfDate(
+          calendarProperties.calendarDatesSectionMaxHeight,
+          calendarProperties.datePickerCalendarView,
+        ),
       ),
       itemCount: 7,
       physics: const NeverScrollableScrollPhysics(),

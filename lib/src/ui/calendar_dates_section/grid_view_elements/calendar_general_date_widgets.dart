@@ -1,5 +1,6 @@
 import 'package:clean_calendar/src/models/calendar_properties.dart';
 import 'package:clean_calendar/src/models/dates_properties.dart';
+import 'package:clean_calendar/src/size_provider.dart';
 import 'package:clean_calendar/src/utils/get_suitable_dates_on_tap.dart';
 import 'package:clean_calendar/src/utils/get_suitable_dates_properties.dart';
 import 'package:clean_calendar/src/utils/get_widget_center_offset_info.dart';
@@ -58,7 +59,7 @@ class CalendarGeneralDenseDate extends StatelessWidget {
                   child: SizedBox(),
                 ),
                 SizedBox(
-                  width: 40,
+                  width: DateSectionSizeProvider.instance.widthOfDate,
                   child: Container(
                     margin: const EdgeInsets.all(4.0),
                     child: Container(
@@ -167,7 +168,7 @@ class CalendarGeneralDenseSplashDate extends StatelessWidget {
                   splashFactory: InkRipple.splashFactory,
                   onTap: disable ? null : dateSuitableDatesOnTap,
                   child: SizedBox(
-                    width: 40,
+                    width: DateSectionSizeProvider.instance.widthOfDate,
                     child: Container(
                       margin: const EdgeInsets.all(4.0),
                       child: Container(

@@ -77,6 +77,7 @@ class _HomeState extends State<Home> {
               height: 20,
             ),
             CleanCalendar(
+              calendarDatesSectionMaxHeight: 40,
               datePickerCalendarView: DatePickerCalendarView.weekView,
               enableDenseViewForDates: true,
               enableDenseSplashForDates: true,
@@ -111,6 +112,7 @@ class _HomeState extends State<Home> {
               },
             ),
             CleanCalendar(
+              calendarDatesSectionMaxHeight: 40,
               headerProperties: HeaderProperties(
                 monthYearDecoration: MonthYearDecoration(
                   monthYearTextColor: Colors.amber,

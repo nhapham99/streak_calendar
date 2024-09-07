@@ -30,6 +30,7 @@ class CleanCalendar extends StatelessWidget {
     this.startWeekday,
     this.weekdaysSymbol,
     this.monthsSymbol,
+    this.calendarDatesSectionMaxHeight,
   });
 
   /// - datePickerCalendarView, It takes calendar view type.
@@ -106,6 +107,12 @@ class CleanCalendar extends StatelessWidget {
   /// Defaults symbols are January, February, March, April, May, June, July, August, September, October, November, December.
   final Months? monthsSymbol;
 
+  /// - calendarDatesSectionMaxHeight, It takes the maximum height for the calendar dates section.
+  ///
+  /// If double.infinity, it will take the 240px height.
+  /// If null, it will take the available height.
+  final double? calendarDatesSectionMaxHeight;
+
   @override
   Widget build(BuildContext context) {
     return Calendar(
@@ -132,6 +139,7 @@ class CleanCalendar extends StatelessWidget {
           startWeekday: startWeekday,
           weekdaysSymbol: weekdaysSymbol,
           monthsSymbol: monthsSymbol,
+          calendarDatesSectionMaxHeight: calendarDatesSectionMaxHeight,
           context: context),
     );
   }

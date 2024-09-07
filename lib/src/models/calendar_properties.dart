@@ -141,6 +141,9 @@ class CalendarProperties {
   /// Calendar months symbols.
   final Months monthsSymbol;
 
+  /// Calendar dates section height.
+  final double? calendarDatesSectionMaxHeight;
+
   /// App context (For setting defaults based on app theme).
   final BuildContext context;
 
@@ -169,6 +172,7 @@ class CalendarProperties {
     WeekDay? startWeekday,
     Weekdays? weekdaysSymbol,
     Months? monthsSymbol,
+    this.calendarDatesSectionMaxHeight,
     required this.context,
   })  :
 
@@ -518,6 +522,8 @@ class CalendarProperties {
           startWeekday == other.startWeekday &&
           weekdaysSymbol == other.weekdaysSymbol &&
           monthsSymbol == other.monthsSymbol &&
+          calendarDatesSectionMaxHeight ==
+              other.calendarDatesSectionMaxHeight &&
           context == other.context;
 
   @override
@@ -545,12 +551,13 @@ class CalendarProperties {
       startWeekday.hashCode ^
       weekdaysSymbol.hashCode ^
       monthsSymbol.hashCode ^
+      calendarDatesSectionMaxHeight.hashCode ^
       context.hashCode;
 
   // Implement toString to make it easier to see information
   // when using the print statement.
   @override
   String toString() {
-    return 'CalendarProperties{weekdaysProperties: $weekdaysProperties, streakDatesProperties: $streakDatesProperties, currentDateProperties: $currentDateProperties, generalDatesProperties: $generalDatesProperties, leadingTrailingDatesProperties: $leadingTrailingDatesProperties, selectedDatesProperties: $selectedDatesProperties, selectedRangeBetweenDatesProperties: $selectedRangeBetweenDatesProperties, enableDenseViewForDates: $enableDenseViewForDates, enableDenseSplashForDates: $enableDenseSplashForDates, startDateOfCalendar: $startDateOfCalendar, endDateOfCalendar: $endDateOfCalendar, dateSelectionMode: $dateSelectionMode, disablePastDates: $disablePastDates, initialViewMonthDateTime: $initialViewMonthDateTime, currentDateOfCalendar: $currentDateOfCalendar, datesForStreaks: $datesForStreaks,  selectedDates: $selectedDates, onSelectedDates: $onSelectedDates, onCalendarViewDate: $onCalendarViewDate, datePickerCalendarView: $datePickerCalendarView, startWeekday: $startWeekday, weekdaysSymbol: $weekdaysSymbol, monthsSymbol: $monthsSymbol, context: $context}';
+    return 'CalendarProperties{weekdaysProperties: $weekdaysProperties, streakDatesProperties: $streakDatesProperties, currentDateProperties: $currentDateProperties, generalDatesProperties: $generalDatesProperties, leadingTrailingDatesProperties: $leadingTrailingDatesProperties, selectedDatesProperties: $selectedDatesProperties, selectedRangeBetweenDatesProperties: $selectedRangeBetweenDatesProperties, enableDenseViewForDates: $enableDenseViewForDates, enableDenseSplashForDates: $enableDenseSplashForDates, startDateOfCalendar: $startDateOfCalendar, endDateOfCalendar: $endDateOfCalendar, dateSelectionMode: $dateSelectionMode, disablePastDates: $disablePastDates, initialViewMonthDateTime: $initialViewMonthDateTime, currentDateOfCalendar: $currentDateOfCalendar, datesForStreaks: $datesForStreaks,  selectedDates: $selectedDates, onSelectedDates: $onSelectedDates, onCalendarViewDate: $onCalendarViewDate, datePickerCalendarView: $datePickerCalendarView, startWeekday: $startWeekday, weekdaysSymbol: $weekdaysSymbol, monthsSymbol: $monthsSymbol, calendarDatesSectionMaxHeight: $calendarDatesSectionMaxHeight, context: $context}';
   }
 }
