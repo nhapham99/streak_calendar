@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 
 class CalendarWeekdayHeaderSection extends StatelessWidget {
   const CalendarWeekdayHeaderSection(
-      {Key? key, required this.calendarProperties})
-      : super(key: key);
+      {super.key, required this.calendarProperties});
 
   final CalendarProperties calendarProperties;
 
@@ -39,8 +38,7 @@ class CalendarWeekdayHeaderSection extends StatelessWidget {
 
 class CalendarWeekdaySymbol extends StatelessWidget {
   const CalendarWeekdaySymbol(
-      {Key? key, required this.symbol, required this.weekdayDecoration})
-      : super(key: key);
+      {super.key, required this.symbol, required this.weekdayDecoration});
 
   final String symbol;
 

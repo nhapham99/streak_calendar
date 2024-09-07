@@ -6,8 +6,7 @@ import 'package:clean_calendar/src/ui/calendar_weekday_header_section.dart';
 import 'package:flutter/material.dart';
 
 class Calendar extends StatelessWidget {
-  const Calendar({Key? key, required this.calendarProperties})
-      : super(key: key);
+  const Calendar({super.key, required this.calendarProperties});
 
   final CalendarProperties calendarProperties;
 
@@ -18,8 +17,7 @@ class Calendar extends StatelessWidget {
 }
 
 class CalendarView extends StatefulWidget {
-  const CalendarView({Key? key, required this.calendarProperties})
-      : super(key: key);
+  const CalendarView({super.key, required this.calendarProperties});
 
   final CalendarProperties calendarProperties;
 

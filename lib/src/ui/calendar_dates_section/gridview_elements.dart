@@ -5,11 +5,10 @@ import 'package:flutter/material.dart';
 
 class CalendarDateWidget extends StatelessWidget {
   const CalendarDateWidget(
-      {Key? key,
+      {super.key,
       required this.calendarProperties,
       required this.pageViewElementDate,
-      required this.pageViewDate})
-      : super(key: key);
+      required this.pageViewDate});
 
   final CalendarProperties calendarProperties;
   final DateTime pageViewElementDate;

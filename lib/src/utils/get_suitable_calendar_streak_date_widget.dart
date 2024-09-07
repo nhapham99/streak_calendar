@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 
 class GetSuitableCalendarStreakDateWidget extends StatelessWidget {
   const GetSuitableCalendarStreakDateWidget(
-      {Key? key,
+      {super.key,
       required this.calendarProperties,
       required this.pageViewElementDate,
-      required this.pageViewDate})
-      : super(key: key);
+      required this.pageViewDate});
 
   final CalendarProperties calendarProperties;
   final DateTime pageViewElementDate;

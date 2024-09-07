@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class CleanCalendar extends StatelessWidget {
   /// - CleanCalendar, Shows a simple Calendar.
   const CleanCalendar({
-    Key? key,
+    super.key,
     this.datePickerCalendarView,
     this.headerProperties,
     this.weekdaysProperties,
@@ -16,13 +16,11 @@ class CleanCalendar extends StatelessWidget {
     this.generalDatesProperties,
     this.leadingTrailingDatesProperties,
     this.selectedDatesProperties,
-    // this.selectedRangeBetweenDatesProperties,
     this.enableDenseViewForDates,
     this.enableDenseSplashForDates,
     this.startDateOfCalendar,
     this.endDateOfCalendar,
     this.dateSelectionMode,
-    // this.disablePastDates,
     this.initialViewMonthDateTime,
     this.currentDateOfCalendar,
     this.datesForStreaks,
@@ -32,7 +30,7 @@ class CleanCalendar extends StatelessWidget {
     this.startWeekday,
     this.weekdaysSymbol,
     this.monthsSymbol,
-  }) : super(key: key);
+  });
 
   /// - datePickerCalendarView, It takes calendar view type.
   final DatePickerCalendarView? datePickerCalendarView;
@@ -57,7 +55,6 @@ class CleanCalendar extends StatelessWidget {
 
   /// - selectedDatesProperties, It takes customisation properties for selected dates.
   final DatesProperties? selectedDatesProperties;
-  // final DatesProperties? selectedRangeBetweenDatesProperties;
 
   /// - enableDenseViewForDates, Set true to allow date boundary to shrink.
   final bool? enableDenseViewForDates;
@@ -73,8 +70,6 @@ class CleanCalendar extends StatelessWidget {
 
   /// - dateSelectionMode, It takes DatePickerSelectionMode which Provides different modes for date selection.
   final DatePickerSelectionMode? dateSelectionMode;
-
-  // final bool? disablePastDates;
 
   /// - initialViewMonthDateTime, It takes initial month date for calendar view.
   /// Defaults to current date and if current is not between startDateOfCalendar and endDateOfCalendar then defaults to start date.

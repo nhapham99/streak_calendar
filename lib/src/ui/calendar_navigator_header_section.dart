@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 
 class CalendarNavigatorHeaderSection extends StatelessWidget {
   const CalendarNavigatorHeaderSection(
-      {Key? key,
+      {super.key,
       required this.calendarProperties,
-      required this.pageControllerState})
-      : super(key: key);
+      required this.pageControllerState});
 
   final CalendarProperties calendarProperties;
   final PageControllerState pageControllerState;

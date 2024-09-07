@@ -276,7 +276,7 @@ class CalendarProperties {
           datesDecoration: DatesDecoration(
               datesBackgroundColor: streakDatesProperties
                       ?.datesDecoration?.datesBackgroundColor ??
-                  Theme.of(context).colorScheme.surfaceVariant,
+                  Theme.of(context).colorScheme.surfaceContainerHighest,
               datesTextColor:
                   streakDatesProperties?.datesDecoration?.datesTextColor ??
                       Theme.of(context).colorScheme.onSurfaceVariant,
@@ -385,7 +385,7 @@ class CalendarProperties {
           datesDecoration: DatesDecoration(
               datesBackgroundColor: selectedRangeBetweenDatesProperties
                       ?.datesDecoration?.datesBackgroundColor ??
-                  Theme.of(context).colorScheme.surfaceVariant,
+                  Theme.of(context).colorScheme.surfaceContainerHighest,
               datesTextColor: selectedRangeBetweenDatesProperties
                       ?.datesDecoration?.datesTextColor ??
                   Theme.of(context).colorScheme.onSurfaceVariant,

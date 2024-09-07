@@ -5,10 +5,9 @@ import 'package:flutter/material.dart';
 
 class ScrollablePageViewBuilder extends StatelessWidget {
   const ScrollablePageViewBuilder(
-      {Key? key,
+      {super.key,
       required this.calendarProperties,
-      required this.pageControllerState})
-      : super(key: key);
+      required this.pageControllerState});
 
   final CalendarProperties calendarProperties;
   final PageControllerState pageControllerState;
@@ -40,10 +39,9 @@ class ScrollablePageViewBuilder extends StatelessWidget {
 
 class MonthViewScrollablePageViewBuilder extends StatelessWidget {
   const MonthViewScrollablePageViewBuilder(
-      {Key? key,
+      {super.key,
       required this.calendarProperties,
-      required this.pageControllerState})
-      : super(key: key);
+      required this.pageControllerState});
 
   final CalendarProperties calendarProperties;
   final PageControllerState pageControllerState;
@@ -89,10 +87,9 @@ class MonthViewScrollablePageViewBuilder extends StatelessWidget {
 
 class WeekViewScrollablePageViewBuilder extends StatelessWidget {
   const WeekViewScrollablePageViewBuilder(
-      {Key? key,
+      {super.key,
       required this.calendarProperties,
-      required this.pageControllerState})
-      : super(key: key);
+      required this.pageControllerState});
 
   final CalendarProperties calendarProperties;
   final PageControllerState pageControllerState;
@@ -136,7 +133,7 @@ class WeekViewScrollablePageViewBuilder extends StatelessWidget {
 }
 
 class KeepAlive extends StatefulWidget {
-  const KeepAlive({Key? key, required this.data}) : super(key: key);
+  const KeepAlive({super.key, required this.data});
 
   final Widget data;
 

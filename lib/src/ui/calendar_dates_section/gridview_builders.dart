@@ -7,11 +7,10 @@ import 'package:flutter/material.dart';
 
 class CalendarGridViewBuilder extends StatelessWidget {
   const CalendarGridViewBuilder(
-      {Key? key,
+      {super.key,
       required this.calendarProperties,
       required this.pageControllerState,
-      required this.pageViewDate})
-      : super(key: key);
+      required this.pageViewDate});
 
   final CalendarProperties calendarProperties;
   final PageControllerState pageControllerState;
@@ -34,14 +33,7 @@ class CalendarGridViewBuilder extends StatelessWidget {
         pageControllerState: pageControllerState,
         pageViewDate: pageViewDate,
       );
-    }
-    // if (dateSelectionMode == DatePickerSelectionMode.range) {
-    //   return DateRangeSelectionGridViewBuilder(
-    //     pageViewMonthDate: pageViewMonthDate,
-    //     pageViewElementsDates: pageViewElementsDates,
-    //   );
-    // }
-    else {
+    } else {
       return const SizedBox();
     }
   }
@@ -49,11 +41,10 @@ class CalendarGridViewBuilder extends StatelessWidget {
 
 class CalendarMonthViewGridViewBuilder extends StatelessWidget {
   const CalendarMonthViewGridViewBuilder(
-      {Key? key,
+      {super.key,
       required this.calendarProperties,
       required this.pageControllerState,
-      required this.pageViewDate})
-      : super(key: key);
+      required this.pageViewDate});
 
   final CalendarProperties calendarProperties;
   final PageControllerState pageControllerState;
@@ -82,14 +73,7 @@ class CalendarMonthViewGridViewBuilder extends StatelessWidget {
         pageViewElementsDates: pageViewElementsDates,
         pageViewDate: pageViewDate,
       );
-    }
-    // if (dateSelectionMode == DatePickerSelectionMode.range) {
-    //   return DateRangeSelectionGridViewBuilder(
-    //     pageViewMonthDate: pageViewMonthDate,
-    //     pageViewElementsDates: pageViewElementsDates,
-    //   );
-    // }
-    else {
+    } else {
       return const SizedBox();
     }
   }
@@ -97,11 +81,10 @@ class CalendarMonthViewGridViewBuilder extends StatelessWidget {
 
 class CalendarWeekViewGridViewBuilder extends StatelessWidget {
   const CalendarWeekViewGridViewBuilder(
-      {Key? key,
+      {super.key,
       required this.calendarProperties,
       required this.pageControllerState,
-      required this.pageViewDate})
-      : super(key: key);
+      required this.pageViewDate});
 
   final CalendarProperties calendarProperties;
   final PageControllerState pageControllerState;
@@ -130,84 +113,19 @@ class CalendarWeekViewGridViewBuilder extends StatelessWidget {
         pageViewElementsDates: pageViewElementsDates,
         pageViewDate: pageViewDate,
       );
-    }
-    // if (dateSelectionMode == DatePickerSelectionMode.range) {
-    //   return DateRangeSelectionGridViewBuilder(
-    //     pageViewMonthDate: pageViewMonthDate,
-    //     pageViewElementsDates: pageViewElementsDates,
-    //   );
-    // }
-    else {
+    } else {
       return const SizedBox();
     }
   }
 }
 
-// class DateRangeSelectionGridViewBuilder extends StatelessWidget {
-//   const DateRangeSelectionGridViewBuilder(
-//       {Key? key,
-//       required this.pageViewElementsDates,
-//       required this.pageViewMonthDate})
-//       : super(key: key);
-//
-//   final List<DateTime> pageViewElementsDates;
-//   final DateTime pageViewMonthDate;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     /// It is important that we create Global key locally as the latest build by PageView builder is not the current page.
-//     /// So storing keys in provider based on latest build would result in saving global keys of next page in PageView leading to undesired results.
-//     /// To avoid this undesired behaviour we provide this local Global key list to gesture detector functions directly.
-//     /// To verify that log the date time inside PageView builder.
-//     List<GlobalKey> pageViewElementsGlobalKeys = List<GlobalKey>.generate(
-//         42,
-//             (index) =>
-//             GlobalKey(debugLabel: "${pageViewElementsDates[index]}"))
-//         .toList();
-//
-//     final GestureDetectorStateProvider
-//     readGestureDetectorStateProviderProviderValue =
-//     ref.read(gestureDetectorStateProviderProvider);
-//
-//     return GestureDetector(
-//           onPanStart: (details) {
-//             readGestureDetectorStateProviderProviderValue.initialise(
-//                 pageViewElementsDates: pageViewElementsDates,
-//                 pageViewElementsGlobalKeys: pageViewElementsGlobalKeys);
-//             readGestureDetectorStateProviderProviderValue.onPanStart(details);
-//           },
-//           onPanUpdate: (details) =>
-//               readGestureDetectorStateProviderProviderValue
-//                   .onPanUpdate(details),
-//           child: GridView.builder(
-//             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-//               childAspectRatio: 1,
-//               crossAxisCount: 7,
-//               mainAxisExtent: 40,
-//             ),
-//             itemCount: 42,
-//             physics: const NeverScrollableScrollPhysics(),
-//             shrinkWrap: true,
-//             itemBuilder: (context, index) {
-//               return CalendarDateWidget(
-//                 key: pageViewElementsGlobalKeys[index],
-//                 pageViewElementDate: pageViewElementsDates[index],
-//                 pageViewDate: pageViewMonthDate,
-//               );
-//             },
-//           ),
-//         );
-//   }
-// }
-
 class NoSelectionMonthViewGridViewBuilder extends StatelessWidget {
   const NoSelectionMonthViewGridViewBuilder(
-      {Key? key,
+      {super.key,
       required this.calendarProperties,
       required this.pageControllerState,
       required this.pageViewElementsDates,
-      required this.pageViewDate})
-      : super(key: key);
+      required this.pageViewDate});
 
   final CalendarProperties calendarProperties;
   final PageControllerState pageControllerState;
@@ -216,26 +134,7 @@ class NoSelectionMonthViewGridViewBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-        // IgnorePointer(
-        // child: GridView.builder(
-        //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        //     childAspectRatio: 1,
-        //     crossAxisCount: 7,
-        //     mainAxisExtent: 40,
-        //   ),
-        //   itemCount: 42,
-        //   shrinkWrap: true,
-        //   physics: const NeverScrollableScrollPhysics(),
-        //   itemBuilder: (context, index) {
-        //     return CalendarDateWidget(
-        //       pageViewElementDate: pageViewElementsDates[index],
-        //       pageViewMonthDate: pageViewMonthDate,
-        //     );
-        //   },
-        // ),
-
-        IgnorePointer(
+    return IgnorePointer(
       child: GridView.custom(
         // shrinkWrap: true,
         physics: const ClampingScrollPhysics(),
@@ -264,12 +163,11 @@ class NoSelectionMonthViewGridViewBuilder extends StatelessWidget {
 class DateSingleMultipleSelectionMonthViewGridViewBuilder
     extends StatelessWidget {
   const DateSingleMultipleSelectionMonthViewGridViewBuilder(
-      {Key? key,
+      {super.key,
       required this.calendarProperties,
       required this.pageControllerState,
       required this.pageViewElementsDates,
-      required this.pageViewDate})
-      : super(key: key);
+      required this.pageViewDate});
 
   final CalendarProperties calendarProperties;
   final PageControllerState pageControllerState;
@@ -309,12 +207,11 @@ class DateSingleMultipleSelectionMonthViewGridViewBuilder
 
 class NoSelectionWeekViewGridViewBuilder extends StatelessWidget {
   const NoSelectionWeekViewGridViewBuilder(
-      {Key? key,
+      {super.key,
       required this.calendarProperties,
       required this.pageControllerState,
       required this.pageViewElementsDates,
-      required this.pageViewDate})
-      : super(key: key);
+      required this.pageViewDate});
 
   final CalendarProperties calendarProperties;
   final PageControllerState pageControllerState;
@@ -323,26 +220,7 @@ class NoSelectionWeekViewGridViewBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-        // IgnorePointer(
-        // child: GridView.builder(
-        //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        //     childAspectRatio: 1,
-        //     crossAxisCount: 7,
-        //     mainAxisExtent: 40,
-        //   ),
-        //   itemCount: 42,
-        //   shrinkWrap: true,
-        //   physics: const NeverScrollableScrollPhysics(),
-        //   itemBuilder: (context, index) {
-        //     return CalendarDateWidget(
-        //       pageViewElementDate: pageViewElementsDates[index],
-        //       pageViewMonthDate: pageViewMonthDate,
-        //     );
-        //   },
-        // ),
-
-        IgnorePointer(
+    return IgnorePointer(
       child: GridView.custom(
         // shrinkWrap: true,
         physics: const ClampingScrollPhysics(),
@@ -371,12 +249,11 @@ class NoSelectionWeekViewGridViewBuilder extends StatelessWidget {
 class DateSingleMultipleSelectionWeekViewGridViewBuilder
     extends StatelessWidget {
   const DateSingleMultipleSelectionWeekViewGridViewBuilder(
-      {Key? key,
+      {super.key,
       required this.calendarProperties,
       required this.pageControllerState,
       required this.pageViewElementsDates,
-      required this.pageViewDate})
-      : super(key: key);
+      required this.pageViewDate});
 
   final CalendarProperties calendarProperties;
   final PageControllerState pageControllerState;
