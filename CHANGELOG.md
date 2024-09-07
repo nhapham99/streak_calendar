@@ -1,3 +1,12 @@
+## 2.0.0
+* **Note:** After this update we will try to rework the package from scratch to make it more efficient and easy to use. So, if you have any suggestions and ideas please feel free to open an issue.
+
+* **BREAKING:** Now the height of date section is not limited. If you want to limit use `calendarDatesSectionMaxHeight` property. Otherwise it will take available height or 240px if available height is infinite.
+
+  To use the previous default size set `calendarDatesSectionMaxHeight: 40` if using `datePickerCalendarView: DatePickerCalendarView.weekView` or `calendarDatesSectionMaxHeight: 240` if `datePickerCalendarView: DatePickerCalendarView.monthView`.
+
+* Fixes overflow issues on low height and width screens.
+
 ## 1.1.0
 
 * Added ```headerProperties``` for changing properties of header section. [#1](https://github.com/chaudharydeepanshu/clean_calendar/issues/1)
