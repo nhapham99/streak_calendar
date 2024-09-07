@@ -15,7 +15,7 @@ and the Flutter guide for
 
 ## Word from creator
 
-**Hello👋, Clean Calendar is in the early stages of development, but rest assured, it will be well-maintained for a long time. Also, if you have any questions or suggestions, contact me via GitHub issues, email, discord, or any of the ways listed on my GitHub profile.**
+**Hello👋, Clean Calendar is in the early stages of development and can have many breaking changes. If you have any questions or suggestions, contact me via GitHub issues, email, discord, or any of the ways listed on my GitHub profile.**
 
 **Yes, giving the package a 👍(Pub) or ⭐(Github) will encourage me to work on it more.**
 
