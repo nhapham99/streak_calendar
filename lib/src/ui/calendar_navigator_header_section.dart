@@ -3,10 +3,11 @@ import 'package:clean_calendar/src/state/page_controller.dart';
 import 'package:flutter/material.dart';
 
 class CalendarNavigatorHeaderSection extends StatelessWidget {
-  const CalendarNavigatorHeaderSection(
-      {super.key,
-      required this.calendarProperties,
-      required this.pageControllerState});
+  const CalendarNavigatorHeaderSection({
+    super.key,
+    required this.calendarProperties,
+    required this.pageControllerState,
+  });
 
   final CalendarProperties calendarProperties;
   final PageControllerState pageControllerState;
@@ -16,47 +17,62 @@ class CalendarNavigatorHeaderSection extends StatelessWidget {
     return AnimatedBuilder(
       animation: pageControllerState,
       builder: (BuildContext context, Widget? child) {
+        // builder for custom build header
+        if (calendarProperties.headerProperties.builder != null) {
+          return calendarProperties.headerProperties.builder!(
+            context, 
+            pageControllerState.pageViewDateTime,
+            () {
+              pageControllerState.pageController
+                  .previousPage(duration: kTabScrollDuration, curve: Curves.ease);
+            },
+            () {
+              pageControllerState.pageController
+                  .nextPage(duration: kTabScrollDuration, curve: Curves.ease);
+            },
+          );
+        }
+
+        // default builder
         final DateTime pageViewDateTime = pageControllerState.pageViewDateTime;
         final List<String> monthsSymbolsList = [];
         calendarProperties.monthsSymbol.toMap().forEach((key, value) {
           monthsSymbolsList.add(value);
         });
 
-        bool shouldShowResetButton = calendarProperties
-                    .datePickerCalendarView ==
+        bool shouldShowResetButton = calendarProperties.datePickerCalendarView ==
                 DatePickerCalendarView.weekView
             ? DateUtils.dateOnly(calendarProperties.initialViewMonthDateTime) !=
                 DateUtils.dateOnly(pageViewDateTime)
-            : DateUtils.dateOnly(calendarProperties.initialViewMonthDateTime
-                    .copyWith(day: 1)) !=
+            : DateUtils.dateOnly(calendarProperties.initialViewMonthDateTime.copyWith(day: 1)) !=
                 DateUtils.dateOnly(pageViewDateTime.copyWith(day: 1));
 
-        Icon navigatorResetButtonIcon = calendarProperties.headerProperties
-                .navigatorDecoration?.navigatorResetButtonIcon ??
-            const Icon(
-              Icons.calendar_today,
-            );
+        Icon navigatorResetButtonIcon =
+            calendarProperties.headerProperties.navigatorDecoration?.navigatorResetButtonIcon ??
+                const Icon(
+                  Icons.calendar_today,
+                );
 
-        Icon navigateLeftButtonIcon = calendarProperties
-                .headerProperties.navigatorDecoration?.navigateLeftButtonIcon ??
-            const Icon(
-              Icons.arrow_back_ios,
-              size: 12,
-            );
+        Icon navigateLeftButtonIcon =
+            calendarProperties.headerProperties.navigatorDecoration?.navigateLeftButtonIcon ??
+                const Icon(
+                  Icons.arrow_back_ios,
+                  size: 12,
+                );
 
-        Icon navigateRightButtonIcon = calendarProperties.headerProperties
-                .navigatorDecoration?.navigateRightButtonIcon ??
-            const Icon(
-              Icons.arrow_forward_ios,
-              size: 12,
-            );
+        Icon navigateRightButtonIcon =
+            calendarProperties.headerProperties.navigatorDecoration?.navigateRightButtonIcon ??
+                const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 12,
+                );
 
-        Color? monthYearTextColor = calendarProperties
-            .headerProperties.monthYearDecoration?.monthYearTextColor;
+        Color? monthYearTextColor =
+            calendarProperties.headerProperties.monthYearDecoration?.monthYearTextColor;
 
-        TextStyle? monthYearTextStyle = calendarProperties
-                .headerProperties.monthYearDecoration?.monthYearTextStyle ??
-            Theme.of(context).textTheme.titleSmall;
+        TextStyle? monthYearTextStyle =
+            calendarProperties.headerProperties.monthYearDecoration?.monthYearTextStyle ??
+                Theme.of(context).textTheme.titleSmall;
 
         return Container(
           margin: const EdgeInsets.only(left: 24, right: 8),
@@ -79,11 +95,10 @@ class CalendarNavigatorHeaderSection extends StatelessWidget {
                         ? Expanded(
                             child: IconButton(
                               onPressed: () {
-                                pageControllerState.pageController
-                                    .animateToPage(
-                                        pageControllerState.initialIndex,
-                                        duration: kTabScrollDuration,
-                                        curve: Curves.ease);
+                                pageControllerState.pageController.animateToPage(
+                                    pageControllerState.initialIndex,
+                                    duration: kTabScrollDuration,
+                                    curve: Curves.ease);
                               },
                               padding: EdgeInsets.zero,
                               icon: navigatorResetButtonIcon,
@@ -93,8 +108,8 @@ class CalendarNavigatorHeaderSection extends StatelessWidget {
                     Expanded(
                       child: IconButton(
                         onPressed: () {
-                          pageControllerState.pageController.previousPage(
-                              duration: kTabScrollDuration, curve: Curves.ease);
+                          pageControllerState.pageController
+                              .previousPage(duration: kTabScrollDuration, curve: Curves.ease);
                         },
                         padding: EdgeInsets.zero,
                         icon: navigateLeftButtonIcon,
@@ -103,8 +118,8 @@ class CalendarNavigatorHeaderSection extends StatelessWidget {
                     Expanded(
                       child: IconButton(
                         onPressed: () {
-                          pageControllerState.pageController.nextPage(
-                              duration: kTabScrollDuration, curve: Curves.ease);
+                          pageControllerState.pageController
+                              .nextPage(duration: kTabScrollDuration, curve: Curves.ease);
                         },
                         padding: EdgeInsets.zero,
                         icon: navigateRightButtonIcon,

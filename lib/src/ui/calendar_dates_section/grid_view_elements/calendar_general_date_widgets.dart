@@ -31,13 +31,14 @@ class CalendarGeneralDenseDate extends StatelessWidget {
       pageViewDate: pageViewDate,
     );
 
-    Color? datesBackgroundColor =
-        datesProperties.datesDecoration?.datesBackgroundColor;
+    Color? datesBackgroundColor = datesProperties.datesDecoration?.datesBackgroundColor;
     Color? datesTextColor = datesProperties.datesDecoration?.datesTextColor;
     TextStyle? datesTextStyle = datesProperties.datesDecoration?.datesTextStyle;
     Color? datesBorderColor = datesProperties.datesDecoration?.datesBorderColor;
-    double? datesBorderRadius =
-        datesProperties.datesDecoration?.datesBorderRadius;
+    Color datesShadowColor =
+        datesProperties.datesDecoration?.datesShadowColor ?? Colors.transparent;
+    double? datesShadowHeight = datesProperties.datesDecoration?.datesShadowHeight;
+    double? datesBorderRadius = datesProperties.datesDecoration?.datesBorderRadius;
     bool hide = datesProperties.hide ?? false;
     bool disable = datesProperties.disable ?? false;
 
@@ -47,8 +48,7 @@ class CalendarGeneralDenseDate extends StatelessWidget {
             highlightShape: BoxShape.rectangle,
             customBorder: datesBorderRadius != null
                 ? RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.all(Radius.circular(datesBorderRadius)),
+                    borderRadius: BorderRadius.all(Radius.circular(datesBorderRadius)),
                   )
                 : null,
             splashFactory: InkRipple.splashFactory,
@@ -69,10 +69,15 @@ class CalendarGeneralDenseDate extends StatelessWidget {
                             ? Border.all(color: datesBorderColor, width: 1)
                             : null,
                         borderRadius: datesBorderRadius != null
-                            ? BorderRadius.all(
-                                Radius.circular(datesBorderRadius))
+                            ? BorderRadius.all(Radius.circular(datesBorderRadius))
                             : null,
                         color: datesBackgroundColor,
+                        boxShadow: [
+                          BoxShadow(
+                            color: datesShadowColor,
+                            offset: Offset(0, datesShadowHeight ?? 0),
+                          )
+                        ],
                       ),
                       child: Center(
                         child: Text(
@@ -123,13 +128,14 @@ class CalendarGeneralDenseSplashDate extends StatelessWidget {
       pageViewDate: pageViewDate,
     );
 
-    Color? datesBackgroundColor =
-        datesProperties.datesDecoration?.datesBackgroundColor;
+    Color? datesBackgroundColor = datesProperties.datesDecoration?.datesBackgroundColor;
     Color? datesTextColor = datesProperties.datesDecoration?.datesTextColor;
     TextStyle? datesTextStyle = datesProperties.datesDecoration?.datesTextStyle;
     Color? datesBorderColor = datesProperties.datesDecoration?.datesBorderColor;
-    double? datesBorderRadius =
-        datesProperties.datesDecoration?.datesBorderRadius;
+    double? datesBorderRadius = datesProperties.datesDecoration?.datesBorderRadius;
+    Color datesShadowColor =
+        datesProperties.datesDecoration?.datesShadowColor ?? Colors.transparent;
+    double? datesShadowHeight = datesProperties.datesDecoration?.datesShadowHeight;
     bool hide = datesProperties.hide ?? false;
     bool disable = datesProperties.disable ?? false;
 
@@ -145,8 +151,7 @@ class CalendarGeneralDenseSplashDate extends StatelessWidget {
             onTap: disable
                 ? null
                 : () {
-                    Offset widgetCenterOffset =
-                        getWidgetCenterOffsetInfo(widgetKey);
+                    Offset widgetCenterOffset = getWidgetCenterOffsetInfo(widgetKey);
                     // print(widgetCenterOffset);
                     simulateTapOnAnOffset(widgetCenterOffset);
                   },
@@ -161,8 +166,7 @@ class CalendarGeneralDenseSplashDate extends StatelessWidget {
                   highlightShape: BoxShape.rectangle,
                   customBorder: datesBorderRadius != null
                       ? RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                              Radius.circular(datesBorderRadius)),
+                          borderRadius: BorderRadius.all(Radius.circular(datesBorderRadius)),
                         )
                       : null,
                   splashFactory: InkRipple.splashFactory,
@@ -178,10 +182,15 @@ class CalendarGeneralDenseSplashDate extends StatelessWidget {
                               ? Border.all(color: datesBorderColor, width: 1)
                               : null,
                           borderRadius: datesBorderRadius != null
-                              ? BorderRadius.all(
-                                  Radius.circular(datesBorderRadius))
+                              ? BorderRadius.all(Radius.circular(datesBorderRadius))
                               : null,
                           color: datesBackgroundColor,
+                          boxShadow: [
+                            BoxShadow(
+                              color: datesShadowColor,
+                              offset: Offset(0, datesShadowHeight ?? 0),
+                            )
+                          ],
                         ),
                         child: Center(
                           child: Text(
@@ -233,13 +242,14 @@ class CalendarGeneralExpandedDate extends StatelessWidget {
       pageViewDate: pageViewDate,
     );
 
-    Color? datesBackgroundColor =
-        datesProperties.datesDecoration?.datesBackgroundColor;
+    Color? datesBackgroundColor = datesProperties.datesDecoration?.datesBackgroundColor;
     Color? datesTextColor = datesProperties.datesDecoration?.datesTextColor;
     TextStyle? datesTextStyle = datesProperties.datesDecoration?.datesTextStyle;
     Color? datesBorderColor = datesProperties.datesDecoration?.datesBorderColor;
-    double? datesBorderRadius =
-        datesProperties.datesDecoration?.datesBorderRadius;
+    double? datesBorderRadius = datesProperties.datesDecoration?.datesBorderRadius;
+    Color datesShadowColor =
+        datesProperties.datesDecoration?.datesShadowColor ?? Colors.transparent;
+    double? datesShadowHeight = datesProperties.datesDecoration?.datesShadowHeight;
     bool hide = datesProperties.hide ?? false;
     bool disable = datesProperties.disable ?? false;
 
@@ -249,8 +259,7 @@ class CalendarGeneralExpandedDate extends StatelessWidget {
             highlightShape: BoxShape.rectangle,
             customBorder: datesBorderRadius != null
                 ? RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.all(Radius.circular(datesBorderRadius)),
+                    borderRadius: BorderRadius.all(Radius.circular(datesBorderRadius)),
                   )
                 : null,
             splashFactory: InkRipple.splashFactory,
@@ -267,6 +276,12 @@ class CalendarGeneralExpandedDate extends StatelessWidget {
                       ? BorderRadius.all(Radius.circular(datesBorderRadius))
                       : null,
                   color: datesBackgroundColor,
+                  boxShadow: [
+                    BoxShadow(
+                      color: datesShadowColor,
+                      offset: Offset(0, datesShadowHeight ?? 0),
+                    )
+                  ],
                 ),
                 child: Center(
                   child: Text(

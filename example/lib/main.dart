@@ -1,4 +1,4 @@
-import 'package:clean_calendar/clean_calendar.dart';
+import 'package:clean_calendar/streak_calendar.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -39,29 +39,41 @@ class _HomeState extends State<Home> {
       body: Center(
         child: ListView(
           children: [
-            CleanCalendar(
+            StreakCalendar(
               enableDenseViewForDates: true,
               enableDenseSplashForDates: true,
               datesForStreaks: [
-                DateTime(2023, 01, 5),
-                DateTime(2023, 01, 6),
-                DateTime(2023, 01, 7),
-                DateTime(2023, 01, 9),
-                DateTime(2023, 01, 10),
-                DateTime(2023, 01, 11),
-                DateTime(2023, 01, 13),
-                DateTime(2023, 01, 20),
-                DateTime(2023, 01, 21),
-                DateTime(2023, 01, 23),
-                DateTime(2023, 01, 24),
-                DateTime(2023, 01, 25),
+                DateTime(2024, 09, 1),
+                DateTime(2024, 09, 2),
+                DateTime(2024, 09, 3),
+                DateTime(2024, 09, 4),
               ],
+              headerProperties: HeaderProperties(
+                builder: (_, date, onNextMonth, onPreviousMonth) {
+                  // Replace your builder here
+                  return Container();
+                },
+              ),
               dateSelectionMode: DatePickerSelectionMode.singleOrMultiple,
               startWeekday: WeekDay.wednesday,
               selectedDates: selectedDates,
               onCalendarViewDate: (DateTime calendarViewDate) {
                 // print(calendarViewDate);
               },
+              currentDateProperties: DatesProperties(
+                datesDecoration: DatesDecoration(
+                  datesBackgroundColor: Colors.white,
+                  datesBorderColor: Colors.transparent,
+                  datesShadowColor: Colors.red,
+                  datesShadowHeight: 2.0,
+                ),
+              ),
+              streakDatesProperties: DatesProperties(
+                datesDecoration: DatesDecoration(
+                  datesBackgroundColor: Colors.red,
+                  datesBorderColor: Colors.transparent,
+                ),
+              ),
               onSelectedDates: (List<DateTime> value) {
                 setState(() {
                   if (selectedDates.contains(value.first)) {
@@ -76,7 +88,7 @@ class _HomeState extends State<Home> {
             const SizedBox(
               height: 20,
             ),
-            CleanCalendar(
+            StreakCalendar(
               calendarDatesSectionMaxHeight: 40,
               datePickerCalendarView: DatePickerCalendarView.weekView,
               enableDenseViewForDates: true,
@@ -111,28 +123,8 @@ class _HomeState extends State<Home> {
                 // print(selectedDates);
               },
             ),
-            CleanCalendar(
+            StreakCalendar(
               calendarDatesSectionMaxHeight: 40,
-              headerProperties: HeaderProperties(
-                monthYearDecoration: MonthYearDecoration(
-                  monthYearTextColor: Colors.amber,
-                  monthYearTextStyle: Theme.of(context).textTheme.labelMedium,
-                ),
-                navigatorDecoration: NavigatorDecoration(
-                  navigatorResetButtonIcon: const Icon(
-                    Icons.restart_alt,
-                    color: Colors.amber,
-                  ),
-                  navigateLeftButtonIcon: const Icon(
-                    Icons.arrow_circle_left,
-                    color: Colors.amber,
-                  ),
-                  navigateRightButtonIcon: const Icon(
-                    Icons.arrow_circle_right,
-                    color: Colors.amber,
-                  ),
-                ),
-              ),
               datePickerCalendarView: DatePickerCalendarView.weekView,
               enableDenseViewForDates: true,
               enableDenseSplashForDates: true,
@@ -178,16 +170,13 @@ class _HomeState extends State<Home> {
                   november: "Nov",
                   december: "Dec"),
               weekdaysProperties: WeekdaysProperties(
-                generalWeekdaysDecoration:
-                    WeekdaysDecoration(weekdayTextColor: Colors.red),
+                generalWeekdaysDecoration: WeekdaysDecoration(weekdayTextColor: Colors.red),
                 sundayDecoration: WeekdaysDecoration(
                     weekdayTextColor: Colors.green,
-                    weekdayTextStyle:
-                        Theme.of(context).textTheme.headlineMedium),
+                    weekdayTextStyle: Theme.of(context).textTheme.headlineMedium),
                 saturdayDecoration: WeekdaysDecoration(
                     weekdayTextColor: Colors.green,
-                    weekdayTextStyle:
-                        Theme.of(context).textTheme.headlineMedium),
+                    weekdayTextStyle: Theme.of(context).textTheme.headlineMedium),
               ),
             ),
           ],

@@ -5,8 +5,7 @@ class DateSectionSizeProvider {
   DateSectionSizeProvider._internal();
 
   // Singleton instance
-  static final DateSectionSizeProvider _instance =
-      DateSectionSizeProvider._internal();
+  static final DateSectionSizeProvider _instance = DateSectionSizeProvider._internal();
 
   // Getter to access the instance
   static DateSectionSizeProvider get instance => _instance;
@@ -28,8 +27,7 @@ class DateSectionSizeProvider {
   double maxHeightOfDateView(
     double? calendarDatesSectionMaxHeight,
   ) {
-    return calendarDatesSectionMaxHeight == double.infinity ||
-            calendarDatesSectionMaxHeight == null
+    return calendarDatesSectionMaxHeight == double.infinity || calendarDatesSectionMaxHeight == null
         ? _height == double.infinity
             ? 240
             : _height

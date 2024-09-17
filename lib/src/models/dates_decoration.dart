@@ -16,12 +16,20 @@ class DatesDecoration {
   /// - datesBorderRadius, changes the dates border radius.
   final double? datesBorderRadius;
 
+  /// - datesShadowHeight, changes the shadow height.
+  final double? datesShadowHeight;
+
+  /// - datesShadowColor, changes the shadow color.
+  final Color? datesShadowColor;
+
   DatesDecoration({
     this.datesBackgroundColor,
     this.datesTextColor,
     this.datesTextStyle,
     this.datesBorderColor,
     this.datesBorderRadius,
+    this.datesShadowHeight,
+    this.datesShadowColor,
   });
 
   /// Creates copy of DatesDecoration object with the given
@@ -32,6 +40,8 @@ class DatesDecoration {
     TextStyle? datesTextStyle,
     Color? datesBorderColor,
     double? datesBorderRadius,
+    double? datesShadowHeight,
+    Color? datesShadowColor,
   }) {
     return DatesDecoration(
       datesBackgroundColor: datesBackgroundColor ?? this.datesBackgroundColor,
@@ -39,6 +49,8 @@ class DatesDecoration {
       datesTextStyle: datesTextStyle ?? this.datesTextStyle,
       datesBorderColor: datesBorderColor ?? this.datesBorderColor,
       datesBorderRadius: datesBorderRadius ?? this.datesBorderRadius,
+      datesShadowHeight: datesShadowHeight ?? this.datesShadowHeight,
+      datesShadowColor: datesShadowColor ?? this.datesShadowColor,
     );
   }
 
@@ -51,7 +63,9 @@ class DatesDecoration {
           datesTextColor == other.datesTextColor &&
           datesTextStyle == other.datesTextStyle &&
           datesBorderColor == other.datesBorderColor &&
-          datesBorderRadius == other.datesBorderRadius;
+          datesBorderRadius == other.datesBorderRadius &&
+          datesShadowHeight == other.datesShadowHeight &&
+          datesShadowColor == other.datesShadowColor;
 
   @override
   int get hashCode =>
@@ -59,12 +73,14 @@ class DatesDecoration {
       datesTextColor.hashCode ^
       datesTextStyle.hashCode ^
       datesBorderColor.hashCode ^
-      datesBorderRadius.hashCode;
+      datesBorderRadius.hashCode ^
+      datesShadowHeight.hashCode ^
+      datesShadowColor.hashCode;
 
   // Implement toString to make it easier to see information
   // when using the print statement.
   @override
   String toString() {
-    return 'DatesDecoration{datesBackgroundColor: $datesBackgroundColor, datesTextColor: $datesTextColor, datesTextStyle: $datesTextStyle, datesBorderColor: $datesBorderColor, datesBorderRadius: $datesBorderRadius}';
+    return 'DatesDecoration{datesBackgroundColor: $datesBackgroundColor, datesTextColor: $datesTextColor, datesTextStyle: $datesTextStyle, datesBorderColor: $datesBorderColor, datesBorderRadius: $datesBorderRadius, shadowHeight: $datesShadowHeight, shadowColor: $datesShadowColor}';
   }
 }
