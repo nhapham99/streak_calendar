@@ -207,6 +207,8 @@ class CalendarProperties {
 
         /// Setting weekdays properties.
         weekdaysProperties = WeekdaysProperties(
+          backgroundColor: weekdaysProperties?.backgroundColor ?? Colors.transparent,
+          borderRadius: weekdaysProperties?.borderRadius ?? BorderRadius.zero,
           generalWeekdaysDecoration: WeekdaysDecoration(
             weekdayTextColor: weekdaysProperties?.generalWeekdaysDecoration?.weekdayTextColor ??
                 Theme.of(context).colorScheme.onSurface,

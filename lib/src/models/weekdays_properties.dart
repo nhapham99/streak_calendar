@@ -1,4 +1,5 @@
 import 'package:clean_calendar/src/models/weekdays_decoration.dart';
+import 'package:flutter/widgets.dart';
 
 class WeekdaysProperties {
   /// - generalWeekdaysDecoration, changes the decoration of all weekdays except for which user has provided specific weekday decoration.
@@ -25,6 +26,11 @@ class WeekdaysProperties {
   /// - sundayDecoration, changes the decoration of only sunday weekday.
   final WeekdaysDecoration? sundayDecoration;
 
+  /// - backgroundColor, changes the background color of all weekdays.
+  final Color? backgroundColor;
+
+  final BorderRadiusGeometry? borderRadius;
+
   WeekdaysProperties({
     this.generalWeekdaysDecoration,
     WeekdaysDecoration? mondayDecoration,
@@ -34,6 +40,8 @@ class WeekdaysProperties {
     WeekdaysDecoration? fridayDecoration,
     WeekdaysDecoration? saturdayDecoration,
     WeekdaysDecoration? sundayDecoration,
+    this.backgroundColor,
+    this.borderRadius,
   })  : mondayDecoration = mondayDecoration ?? generalWeekdaysDecoration,
         tuesdayDecoration = tuesdayDecoration ?? generalWeekdaysDecoration,
         wednesdayDecoration = wednesdayDecoration ?? generalWeekdaysDecoration,
@@ -52,6 +60,8 @@ class WeekdaysProperties {
       'fridayDecoration': fridayDecoration,
       'saturdayDecoration': saturdayDecoration,
       'sundayDecoration': sundayDecoration,
+      'backgroundColor': backgroundColor,
+      'borderRadius': borderRadius,
     };
   }
 
@@ -67,7 +77,9 @@ class WeekdaysProperties {
           thursdayDecoration == other.thursdayDecoration &&
           fridayDecoration == other.fridayDecoration &&
           saturdayDecoration == other.saturdayDecoration &&
-          sundayDecoration == other.sundayDecoration;
+          sundayDecoration == other.sundayDecoration &&
+          backgroundColor == other.backgroundColor &&
+          borderRadius == other.borderRadius;
 
   @override
   int get hashCode =>
@@ -78,12 +90,14 @@ class WeekdaysProperties {
       thursdayDecoration.hashCode ^
       fridayDecoration.hashCode ^
       saturdayDecoration.hashCode ^
-      sundayDecoration.hashCode;
+      sundayDecoration.hashCode ^
+      backgroundColor.hashCode ^
+      borderRadius.hashCode;
 
   // Implement toString to make it easier to see information
   // when using the print statement.
   @override
   String toString() {
-    return 'WeekdaysProperties{generalWeekdaysDecoration: $generalWeekdaysDecoration, mondayDecoration: $mondayDecoration, tuesdayDecoration: $tuesdayDecoration, wednesdayDecoration: $wednesdayDecoration, thursdayDecoration: $thursdayDecoration, fridayDecoration: $fridayDecoration, saturdayDecoration: $saturdayDecoration, sundayDecoration: $sundayDecoration}';
+    return 'WeekdaysProperties{generalWeekdaysDecoration: $generalWeekdaysDecoration, mondayDecoration: $mondayDecoration, tuesdayDecoration: $tuesdayDecoration, wednesdayDecoration: $wednesdayDecoration, thursdayDecoration: $thursdayDecoration, fridayDecoration: $fridayDecoration, saturdayDecoration: $saturdayDecoration, sundayDecoration: $sundayDecoration, backgroundColor: $backgroundColor, borderRadius: $borderRadius}';
   }
 }

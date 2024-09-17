@@ -23,12 +23,13 @@ List<String> getWeekdaysSymbolsListBasedOnStartingWeekday(
 }
 
 List<WeekdaysDecoration> getWeekdaysDecorationListBasedOnStartingWeekday(
-    {required WeekDay startWeekday,
-    required WeekdaysProperties weekdaysProperties}) {
+    {required WeekDay startWeekday, required WeekdaysProperties weekdaysProperties}) {
   List<WeekdaysDecoration> weekdaysPropertiesList = [];
-  weekdaysProperties
-      .toMap()
-      .forEach((key, value) => weekdaysPropertiesList.add(value));
+  weekdaysProperties.toMap().forEach((key, value) {
+    if (value is WeekdaysDecoration) {
+      weekdaysPropertiesList.add(value);
+    }
+  });
   // Removing generalWeekdaysDecoration as not required.
   weekdaysPropertiesList.removeAt(0);
 

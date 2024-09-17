@@ -54,6 +54,10 @@ class _HomeState extends State<Home> {
                   return Container();
                 },
               ),
+              weekdaysProperties: WeekdaysProperties(
+                backgroundColor: Colors.red,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
               dateSelectionMode: DatePickerSelectionMode.singleOrMultiple,
               startWeekday: WeekDay.wednesday,
               selectedDates: selectedDates,

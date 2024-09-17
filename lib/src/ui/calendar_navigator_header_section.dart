@@ -20,15 +20,15 @@ class CalendarNavigatorHeaderSection extends StatelessWidget {
         // builder for custom build header
         if (calendarProperties.headerProperties.builder != null) {
           return calendarProperties.headerProperties.builder!(
-            context, 
+            context,
             pageControllerState.pageViewDateTime,
             () {
               pageControllerState.pageController
-                  .previousPage(duration: kTabScrollDuration, curve: Curves.ease);
+                  .nextPage(duration: kTabScrollDuration, curve: Curves.ease);
             },
             () {
               pageControllerState.pageController
-                  .nextPage(duration: kTabScrollDuration, curve: Curves.ease);
+                  .previousPage(duration: kTabScrollDuration, curve: Curves.ease);
             },
           );
         }
