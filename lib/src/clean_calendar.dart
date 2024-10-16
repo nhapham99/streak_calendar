@@ -12,6 +12,7 @@ class StreakCalendar extends StatelessWidget {
     this.headerProperties,
     this.weekdaysProperties,
     this.streakDatesProperties,
+    this.freezedStreakDatesProperties,
     this.currentDateProperties,
     this.generalDatesProperties,
     this.leadingTrailingDatesProperties,
@@ -24,6 +25,7 @@ class StreakCalendar extends StatelessWidget {
     this.initialViewMonthDateTime,
     this.currentDateOfCalendar,
     this.datesForStreaks,
+    this.datesForFreezedStreaks,
     this.selectedDates,
     this.onSelectedDates,
     this.onCalendarViewDate,
@@ -44,6 +46,9 @@ class StreakCalendar extends StatelessWidget {
 
   /// - streakDatesProperties, It takes customisation properties for streak dates.
   final DatesProperties? streakDatesProperties;
+
+  /// - freezedStreakDatesProperties, It takes customisation properties for freezed streak dates.
+  final DatesProperties? freezedStreakDatesProperties;
 
   /// - currentDateProperties, It takes customisation properties for current dates.
   final DatesProperties? currentDateProperties;
@@ -83,6 +88,9 @@ class StreakCalendar extends StatelessWidget {
   /// - datesForStreaks, It takes the list of dates to be shown as streaks.
   final List<DateTime>? datesForStreaks;
 
+  /// - datesForFreezedStreaks, It takes the list of dates to be shown as freezed streaks.
+  final List<DateTime>? datesForFreezedStreaks;
+
   /// - selectedDates, It takes the list of pre-selected dates to be shown as selected.
   final List<DateTime>? selectedDates;
 
@@ -121,6 +129,7 @@ class StreakCalendar extends StatelessWidget {
           weekdaysProperties: weekdaysProperties,
           headerProperties: headerProperties,
           streakDatesProperties: streakDatesProperties,
+          freezedStreakDatesProperties: freezedStreakDatesProperties,
           currentDateProperties: currentDateProperties,
           generalDatesProperties: generalDatesProperties,
           leadingTrailingDatesProperties: leadingTrailingDatesProperties,

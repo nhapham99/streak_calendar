@@ -25,12 +25,28 @@ DatesProperties getSuitableDatesProperties({
         datesTextStyle: calendarProperties
             .currentDateProperties.datesDecoration?.datesTextStyle,
       ));
+    } else if (calendarProperties.datesForFreezedStreaks
+        .contains(pageViewElementDate)) {
+      return calendarProperties.freezedStreakDatesProperties.copyWith(
+          datesDecoration: calendarProperties
+              .freezedStreakDatesProperties.datesDecoration
+              ?.copyWith(
+        datesTextColor: calendarProperties
+            .currentDateProperties.datesDecoration?.datesTextColor,
+        datesBorderColor: calendarProperties
+            .currentDateProperties.datesDecoration?.datesBorderColor,
+        datesTextStyle: calendarProperties
+            .currentDateProperties.datesDecoration?.datesTextStyle,
+      ));
     } else {
       return calendarProperties.currentDateProperties;
     }
   }
   if (calendarProperties.datesForStreaks.contains(pageViewElementDate)) {
     return calendarProperties.streakDatesProperties;
+  } else if (calendarProperties.datesForFreezedStreaks
+      .contains(pageViewElementDate)) {
+    return calendarProperties.freezedStreakDatesProperties;
   } else {
     return calendarProperties.generalDatesProperties;
   }

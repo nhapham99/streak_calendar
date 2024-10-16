@@ -22,6 +22,15 @@ class CalendarDateWidget extends StatelessWidget {
           pageViewElementDate: pageViewElementDate,
           pageViewDate: pageViewDate);
     }
+
+    if (calendarProperties.datesForFreezedStreaks
+        .contains(pageViewElementDate)) {
+      return GetSuitableCalendarStreakDateWidget(
+          calendarProperties: calendarProperties,
+          pageViewElementDate: pageViewElementDate,
+          pageViewDate: pageViewDate);
+    }
+
     if (!calendarProperties.datesForStreaks.contains(pageViewElementDate)) {
       return GetSuitableCalendarGeneralDateWidget(
         calendarProperties: calendarProperties,

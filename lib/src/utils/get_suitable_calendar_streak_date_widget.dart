@@ -16,11 +16,17 @@ class GetSuitableCalendarStreakDateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// Called when streak date have streak date just before and just after also.
-    if (calendarProperties.datesForStreaks.contains(pageViewElementDate)) {
+    if (calendarProperties.datesForStreaks.contains(pageViewElementDate) ||
+        calendarProperties.datesForFreezedStreaks
+            .contains(pageViewElementDate)) {
       final hasNextDayStreak = calendarProperties.datesForStreaks
-          .contains(pageViewElementDate.add(const Duration(days: 1)));
-      final hasPrevDayStreak = calendarProperties.datesForStreaks
-          .contains(pageViewElementDate.subtract(const Duration(days: 1)));
+              .contains(pageViewElementDate.add(const Duration(days: 1))) ||
+          calendarProperties.datesForFreezedStreaks
+              .contains(pageViewElementDate.add(const Duration(days: 1)));
+      final hasPrevDayStreak = calendarProperties.datesForStreaks.contains(
+              pageViewElementDate.subtract(const Duration(days: 1))) ||
+          calendarProperties.datesForFreezedStreaks
+              .contains(pageViewElementDate.subtract(const Duration(days: 1)));
       final isDenseView = calendarProperties.enableDenseViewForDates;
       final isDenseSplash = calendarProperties.enableDenseSplashForDates;
 
