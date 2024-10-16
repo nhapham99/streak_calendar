@@ -1,4 +1,4 @@
-library clean_calendar;
+library streak_calendar;
 
 import 'package:clean_calendar/streak_calendar.dart';
 import 'package:clean_calendar/src/ui/calendar_view.dart';
@@ -142,6 +142,7 @@ class StreakCalendar extends StatelessWidget {
           initialViewMonthDateTime: initialViewMonthDateTime,
           currentDateOfCalendar: currentDateOfCalendar,
           datesForStreaks: datesForStreaks,
+          datesForFreezedStreaks: datesForFreezedStreaks,
           selectedDates: selectedDates,
           onSelectedDates: onSelectedDates,
           onCalendarViewDate: onCalendarViewDate,
