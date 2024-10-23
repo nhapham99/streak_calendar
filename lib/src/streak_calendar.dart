@@ -4,8 +4,6 @@ import 'package:clean_calendar/streak_calendar.dart';
 import 'package:clean_calendar/src/ui/calendar_view.dart';
 import 'package:flutter/material.dart';
 
-import 'state/page_controller.dart';
-
 class StreakCalendar extends StatelessWidget {
   /// - CleanCalendar, Shows a simple Calendar.
   const StreakCalendar({
