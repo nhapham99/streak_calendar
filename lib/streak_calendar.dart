@@ -1,4 +1,4 @@
-export 'src/clean_calendar.dart' show StreakCalendar;
+export 'src/streak_calendar.dart' show StreakCalendar;
 
 export 'src/models/months_model.dart' show Months;
 

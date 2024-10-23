@@ -78,6 +78,9 @@ class CalendarProperties {
   /// Streak dates properties.
   final DatesProperties streakDatesProperties;
 
+  /// Freezed streak dates properties.
+  final DatesProperties freezedStreakDatesProperties;
+
   /// Current date properties.
   final DatesProperties currentDateProperties;
 
@@ -120,6 +123,9 @@ class CalendarProperties {
   /// List of streak dates.
   final List<DateTime> datesForStreaks;
 
+  /// List of freezed streak dates.
+  final List<DateTime> datesForFreezedStreaks;
+
   /// List of selected dates.
   final List<DateTime> selectedDates;
 
@@ -151,6 +157,7 @@ class CalendarProperties {
     HeaderProperties? headerProperties,
     WeekdaysProperties? weekdaysProperties,
     DatesProperties? streakDatesProperties,
+    DatesProperties? freezedStreakDatesProperties,
     DatesProperties? currentDateProperties,
     DatesProperties? generalDatesProperties,
     DatesProperties? leadingTrailingDatesProperties,
@@ -165,6 +172,7 @@ class CalendarProperties {
     DateTime? initialViewMonthDateTime,
     DateTime? currentDateOfCalendar,
     List<DateTime>? datesForStreaks,
+    List<DateTime>? datesForFreezedStreaks,
     List<DateTime>? selectedDates,
     this.onSelectedDates,
     this.onCalendarViewDate,
@@ -179,120 +187,183 @@ class CalendarProperties {
         /// Setting header properties.
         headerProperties = HeaderProperties(
           monthYearDecoration: MonthYearDecoration(
-            monthYearTextColor: headerProperties?.monthYearDecoration?.monthYearTextColor ??
-                Theme.of(context).colorScheme.onSurface,
+            monthYearTextColor:
+                headerProperties?.monthYearDecoration?.monthYearTextColor ??
+                    Theme.of(context).colorScheme.onSurface,
             monthYearTextStyle:
-                headerProperties?.monthYearDecoration?.monthYearTextStyle ?? const TextStyle(),
+                headerProperties?.monthYearDecoration?.monthYearTextStyle ??
+                    const TextStyle(),
           ),
           navigatorDecoration: NavigatorDecoration(
-            navigateLeftButtonIcon: headerProperties?.navigatorDecoration?.navigateLeftButtonIcon ??
-                const Icon(
-                  Icons.arrow_back_ios,
-                  size: 12,
-                ),
-            navigateRightButtonIcon:
-                headerProperties?.navigatorDecoration?.navigateRightButtonIcon ??
+            navigateLeftButtonIcon:
+                headerProperties?.navigatorDecoration?.navigateLeftButtonIcon ??
                     const Icon(
-                      Icons.arrow_forward_ios,
+                      Icons.arrow_back_ios,
                       size: 12,
                     ),
-            navigatorResetButtonIcon:
-                headerProperties?.navigatorDecoration?.navigatorResetButtonIcon ??
-                    const Icon(
-                      Icons.calendar_today,
-                    ),
+            navigateRightButtonIcon: headerProperties
+                    ?.navigatorDecoration?.navigateRightButtonIcon ??
+                const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 12,
+                ),
+            navigatorResetButtonIcon: headerProperties
+                    ?.navigatorDecoration?.navigatorResetButtonIcon ??
+                const Icon(
+                  Icons.calendar_today,
+                ),
           ),
           builder: headerProperties?.builder,
         ),
 
         /// Setting weekdays properties.
         weekdaysProperties = WeekdaysProperties(
-          backgroundColor: weekdaysProperties?.backgroundColor ?? Colors.transparent,
+          backgroundColor:
+              weekdaysProperties?.backgroundColor ?? Colors.transparent,
           borderRadius: weekdaysProperties?.borderRadius ?? BorderRadius.zero,
           generalWeekdaysDecoration: WeekdaysDecoration(
-            weekdayTextColor: weekdaysProperties?.generalWeekdaysDecoration?.weekdayTextColor ??
+            weekdayTextColor: weekdaysProperties
+                    ?.generalWeekdaysDecoration?.weekdayTextColor ??
                 Theme.of(context).colorScheme.onSurface,
-            weekdayTextStyle: weekdaysProperties?.generalWeekdaysDecoration?.weekdayTextStyle ??
+            weekdayTextStyle: weekdaysProperties
+                    ?.generalWeekdaysDecoration?.weekdayTextStyle ??
                 const TextStyle(),
           ),
           sundayDecoration: WeekdaysDecoration(
-            weekdayTextColor: weekdaysProperties?.sundayDecoration?.weekdayTextColor ??
-                Theme.of(context).colorScheme.onSurface,
+            weekdayTextColor:
+                weekdaysProperties?.sundayDecoration?.weekdayTextColor ??
+                    Theme.of(context).colorScheme.onSurface,
             weekdayTextStyle:
-                weekdaysProperties?.sundayDecoration?.weekdayTextStyle ?? const TextStyle(),
+                weekdaysProperties?.sundayDecoration?.weekdayTextStyle ??
+                    const TextStyle(),
           ),
           mondayDecoration: WeekdaysDecoration(
-            weekdayTextColor: weekdaysProperties?.mondayDecoration?.weekdayTextColor ??
-                Theme.of(context).colorScheme.onSurface,
+            weekdayTextColor:
+                weekdaysProperties?.mondayDecoration?.weekdayTextColor ??
+                    Theme.of(context).colorScheme.onSurface,
             weekdayTextStyle:
-                weekdaysProperties?.mondayDecoration?.weekdayTextStyle ?? const TextStyle(),
+                weekdaysProperties?.mondayDecoration?.weekdayTextStyle ??
+                    const TextStyle(),
           ),
           tuesdayDecoration: WeekdaysDecoration(
-            weekdayTextColor: weekdaysProperties?.tuesdayDecoration?.weekdayTextColor ??
-                Theme.of(context).colorScheme.onSurface,
+            weekdayTextColor:
+                weekdaysProperties?.tuesdayDecoration?.weekdayTextColor ??
+                    Theme.of(context).colorScheme.onSurface,
             weekdayTextStyle:
-                weekdaysProperties?.tuesdayDecoration?.weekdayTextStyle ?? const TextStyle(),
+                weekdaysProperties?.tuesdayDecoration?.weekdayTextStyle ??
+                    const TextStyle(),
           ),
           wednesdayDecoration: WeekdaysDecoration(
-            weekdayTextColor: weekdaysProperties?.wednesdayDecoration?.weekdayTextColor ??
-                Theme.of(context).colorScheme.onSurface,
+            weekdayTextColor:
+                weekdaysProperties?.wednesdayDecoration?.weekdayTextColor ??
+                    Theme.of(context).colorScheme.onSurface,
             weekdayTextStyle:
-                weekdaysProperties?.wednesdayDecoration?.weekdayTextStyle ?? const TextStyle(),
+                weekdaysProperties?.wednesdayDecoration?.weekdayTextStyle ??
+                    const TextStyle(),
           ),
           thursdayDecoration: WeekdaysDecoration(
-            weekdayTextColor: weekdaysProperties?.thursdayDecoration?.weekdayTextColor ??
-                Theme.of(context).colorScheme.onSurface,
+            weekdayTextColor:
+                weekdaysProperties?.thursdayDecoration?.weekdayTextColor ??
+                    Theme.of(context).colorScheme.onSurface,
             weekdayTextStyle:
-                weekdaysProperties?.thursdayDecoration?.weekdayTextStyle ?? const TextStyle(),
+                weekdaysProperties?.thursdayDecoration?.weekdayTextStyle ??
+                    const TextStyle(),
           ),
           fridayDecoration: WeekdaysDecoration(
-            weekdayTextColor: weekdaysProperties?.fridayDecoration?.weekdayTextColor ??
-                Theme.of(context).colorScheme.onSurface,
+            weekdayTextColor:
+                weekdaysProperties?.fridayDecoration?.weekdayTextColor ??
+                    Theme.of(context).colorScheme.onSurface,
             weekdayTextStyle:
-                weekdaysProperties?.fridayDecoration?.weekdayTextStyle ?? const TextStyle(),
+                weekdaysProperties?.fridayDecoration?.weekdayTextStyle ??
+                    const TextStyle(),
           ),
           saturdayDecoration: WeekdaysDecoration(
-            weekdayTextColor: weekdaysProperties?.saturdayDecoration?.weekdayTextColor ??
-                Theme.of(context).colorScheme.onSurface,
+            weekdayTextColor:
+                weekdaysProperties?.saturdayDecoration?.weekdayTextColor ??
+                    Theme.of(context).colorScheme.onSurface,
             weekdayTextStyle:
-                weekdaysProperties?.saturdayDecoration?.weekdayTextStyle ?? const TextStyle(),
+                weekdaysProperties?.saturdayDecoration?.weekdayTextStyle ??
+                    const TextStyle(),
           ),
         ),
 
         /// Setting streakDatesProperties properties.
         streakDatesProperties = DatesProperties(
           datesDecoration: DatesDecoration(
-            datesBackgroundColor: streakDatesProperties?.datesDecoration?.datesBackgroundColor ??
-                Theme.of(context).colorScheme.surfaceContainerHighest,
-            datesTextColor: streakDatesProperties?.datesDecoration?.datesTextColor ??
-                Theme.of(context).colorScheme.onSurfaceVariant,
+            datesBackgroundColor:
+                streakDatesProperties?.datesDecoration?.datesBackgroundColor ??
+                    Theme.of(context).colorScheme.surfaceContainerHighest,
+            datesTextColor:
+                streakDatesProperties?.datesDecoration?.datesTextColor ??
+                    Theme.of(context).colorScheme.onSurfaceVariant,
             datesTextStyle:
-                streakDatesProperties?.datesDecoration?.datesTextStyle ?? const TextStyle(),
-            datesBorderColor: streakDatesProperties?.datesDecoration?.datesBorderColor ??
-                Theme.of(context).colorScheme.onSurface,
-            datesBorderRadius: streakDatesProperties?.datesDecoration?.datesBorderRadius ?? 12,
-            datesShadowHeight: streakDatesProperties?.datesDecoration?.datesShadowHeight ?? 0,
+                streakDatesProperties?.datesDecoration?.datesTextStyle ??
+                    const TextStyle(),
+            datesBorderColor:
+                streakDatesProperties?.datesDecoration?.datesBorderColor ??
+                    Theme.of(context).colorScheme.onSurface,
+            datesBorderRadius:
+                streakDatesProperties?.datesDecoration?.datesBorderRadius ?? 12,
+            datesShadowHeight:
+                streakDatesProperties?.datesDecoration?.datesShadowHeight ?? 0,
             datesShadowColor:
-                streakDatesProperties?.datesDecoration?.datesShadowColor ?? Colors.transparent,
+                streakDatesProperties?.datesDecoration?.datesShadowColor ??
+                    Colors.transparent,
           ),
           disable: streakDatesProperties?.disable ?? false,
           hide: streakDatesProperties?.hide ?? false,
         ),
 
+        /// Setting freezedStreakDatesProperties properties.
+        freezedStreakDatesProperties = DatesProperties(
+          datesDecoration: DatesDecoration(
+            datesBackgroundColor: freezedStreakDatesProperties
+                    ?.datesDecoration?.datesBackgroundColor ??
+                Theme.of(context).colorScheme.surfaceContainerHighest,
+            datesTextColor:
+                freezedStreakDatesProperties?.datesDecoration?.datesTextColor ??
+                    Theme.of(context).colorScheme.onSurfaceVariant,
+            datesTextStyle:
+                freezedStreakDatesProperties?.datesDecoration?.datesTextStyle ??
+                    const TextStyle(),
+            datesBorderColor: freezedStreakDatesProperties
+                    ?.datesDecoration?.datesBorderColor ??
+                Theme.of(context).colorScheme.onSurface,
+            datesBorderRadius: freezedStreakDatesProperties
+                    ?.datesDecoration?.datesBorderRadius ??
+                12,
+            datesShadowHeight: freezedStreakDatesProperties
+                    ?.datesDecoration?.datesShadowHeight ??
+                0,
+            datesShadowColor: freezedStreakDatesProperties
+                    ?.datesDecoration?.datesShadowColor ??
+                Colors.transparent,
+          ),
+          disable: freezedStreakDatesProperties?.disable ?? false,
+          hide: freezedStreakDatesProperties?.hide ?? false,
+        ),
+
         /// Setting currentDateProperties properties.
         currentDateProperties = DatesProperties(
           datesDecoration: DatesDecoration(
-            datesBackgroundColor: currentDateProperties?.datesDecoration?.datesBackgroundColor,
-            datesTextColor: currentDateProperties?.datesDecoration?.datesTextColor ??
-                Theme.of(context).colorScheme.primary,
+            datesBackgroundColor:
+                currentDateProperties?.datesDecoration?.datesBackgroundColor,
+            datesTextColor:
+                currentDateProperties?.datesDecoration?.datesTextColor ??
+                    Theme.of(context).colorScheme.primary,
             datesTextStyle:
-                currentDateProperties?.datesDecoration?.datesTextStyle ?? const TextStyle(),
-            datesBorderColor: currentDateProperties?.datesDecoration?.datesBorderColor ??
-                Theme.of(context).colorScheme.primary,
-            datesBorderRadius: currentDateProperties?.datesDecoration?.datesBorderRadius ?? 12,
-            datesShadowHeight: currentDateProperties?.datesDecoration?.datesShadowHeight ?? 0,
+                currentDateProperties?.datesDecoration?.datesTextStyle ??
+                    const TextStyle(),
+            datesBorderColor:
+                currentDateProperties?.datesDecoration?.datesBorderColor ??
+                    Theme.of(context).colorScheme.primary,
+            datesBorderRadius:
+                currentDateProperties?.datesDecoration?.datesBorderRadius ?? 12,
+            datesShadowHeight:
+                currentDateProperties?.datesDecoration?.datesShadowHeight ?? 0,
             datesShadowColor:
-                currentDateProperties?.datesDecoration?.datesShadowColor ?? Colors.transparent,
+                currentDateProperties?.datesDecoration?.datesShadowColor ??
+                    Colors.transparent,
           ),
           disable: currentDateProperties?.disable ?? false,
           hide: currentDateProperties?.hide ?? false,
@@ -302,17 +373,25 @@ class CalendarProperties {
         generalDatesProperties = DatesProperties(
           datesDecoration: DatesDecoration(
             datesBackgroundColor:
-                generalDatesProperties?.datesDecoration?.datesBackgroundColor ?? Colors.transparent,
-            datesTextColor: generalDatesProperties?.datesDecoration?.datesTextColor ??
-                Theme.of(context).colorScheme.onSurface,
+                generalDatesProperties?.datesDecoration?.datesBackgroundColor ??
+                    Colors.transparent,
+            datesTextColor:
+                generalDatesProperties?.datesDecoration?.datesTextColor ??
+                    Theme.of(context).colorScheme.onSurface,
             datesTextStyle:
-                generalDatesProperties?.datesDecoration?.datesTextStyle ?? const TextStyle(),
-            datesBorderColor: generalDatesProperties?.datesDecoration?.datesBorderColor ??
-                Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
-            datesBorderRadius: generalDatesProperties?.datesDecoration?.datesBorderRadius ?? 12,
-            datesShadowHeight: generalDatesProperties?.datesDecoration?.datesShadowHeight ?? 0,
+                generalDatesProperties?.datesDecoration?.datesTextStyle ??
+                    const TextStyle(),
+            datesBorderColor:
+                generalDatesProperties?.datesDecoration?.datesBorderColor ??
+                    Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+            datesBorderRadius:
+                generalDatesProperties?.datesDecoration?.datesBorderRadius ??
+                    12,
+            datesShadowHeight:
+                generalDatesProperties?.datesDecoration?.datesShadowHeight ?? 0,
             datesShadowColor:
-                generalDatesProperties?.datesDecoration?.datesShadowColor ?? Colors.transparent,
+                generalDatesProperties?.datesDecoration?.datesShadowColor ??
+                    Colors.transparent,
           ),
           disable: generalDatesProperties?.disable ?? false,
           hide: generalDatesProperties?.hide ?? false,
@@ -321,20 +400,26 @@ class CalendarProperties {
         /// Setting leadingTrailingDatesProperties properties.
         leadingTrailingDatesProperties = DatesProperties(
           datesDecoration: DatesDecoration(
-            datesBackgroundColor:
-                leadingTrailingDatesProperties?.datesDecoration?.datesBackgroundColor ??
-                    Theme.of(context).colorScheme.surface,
-            datesTextColor: leadingTrailingDatesProperties?.datesDecoration?.datesTextColor ??
+            datesBackgroundColor: leadingTrailingDatesProperties
+                    ?.datesDecoration?.datesBackgroundColor ??
+                Theme.of(context).colorScheme.surface,
+            datesTextColor: leadingTrailingDatesProperties
+                    ?.datesDecoration?.datesTextColor ??
                 Theme.of(context).disabledColor,
-            datesTextStyle: leadingTrailingDatesProperties?.datesDecoration?.datesTextStyle ??
+            datesTextStyle: leadingTrailingDatesProperties
+                    ?.datesDecoration?.datesTextStyle ??
                 const TextStyle(),
-            datesBorderColor: leadingTrailingDatesProperties?.datesDecoration?.datesBorderColor ??
+            datesBorderColor: leadingTrailingDatesProperties
+                    ?.datesDecoration?.datesBorderColor ??
                 Theme.of(context).disabledColor,
-            datesBorderRadius:
-                leadingTrailingDatesProperties?.datesDecoration?.datesBorderRadius ?? 12,
-            datesShadowHeight:
-                leadingTrailingDatesProperties?.datesDecoration?.datesShadowHeight ?? 0,
-            datesShadowColor: leadingTrailingDatesProperties?.datesDecoration?.datesShadowColor ??
+            datesBorderRadius: leadingTrailingDatesProperties
+                    ?.datesDecoration?.datesBorderRadius ??
+                12,
+            datesShadowHeight: leadingTrailingDatesProperties
+                    ?.datesDecoration?.datesShadowHeight ??
+                0,
+            datesShadowColor: leadingTrailingDatesProperties
+                    ?.datesDecoration?.datesShadowColor ??
                 Colors.transparent,
           ),
           disable: leadingTrailingDatesProperties?.disable ?? true,
@@ -344,16 +429,21 @@ class CalendarProperties {
         /// Setting selectedDatesProperties properties.
         selectedDatesProperties = DatesProperties(
           datesDecoration: DatesDecoration(
-              datesBackgroundColor:
-                  selectedDatesProperties?.datesDecoration?.datesBackgroundColor ??
-                      Theme.of(context).colorScheme.primary,
-              datesTextColor: selectedDatesProperties?.datesDecoration?.datesTextColor ??
-                  Theme.of(context).colorScheme.onPrimary,
-              datesTextStyle:
-                  selectedDatesProperties?.datesDecoration?.datesTextStyle ?? const TextStyle(),
-              datesBorderColor: selectedDatesProperties?.datesDecoration?.datesBorderColor ??
+              datesBackgroundColor: selectedDatesProperties
+                      ?.datesDecoration?.datesBackgroundColor ??
                   Theme.of(context).colorScheme.primary,
-              datesBorderRadius: selectedDatesProperties?.datesDecoration?.datesBorderRadius ?? 12),
+              datesTextColor:
+                  selectedDatesProperties?.datesDecoration?.datesTextColor ??
+                      Theme.of(context).colorScheme.onPrimary,
+              datesTextStyle:
+                  selectedDatesProperties?.datesDecoration?.datesTextStyle ??
+                      const TextStyle(),
+              datesBorderColor:
+                  selectedDatesProperties?.datesDecoration?.datesBorderColor ??
+                      Theme.of(context).colorScheme.primary,
+              datesBorderRadius:
+                  selectedDatesProperties?.datesDecoration?.datesBorderRadius ??
+                      12),
           disable: selectedDatesProperties?.disable ?? false,
           hide: selectedDatesProperties?.hide ?? false,
         ),
@@ -361,20 +451,21 @@ class CalendarProperties {
         /// Setting selectedRangeBetweenDatesProperties properties.
         selectedRangeBetweenDatesProperties = DatesProperties(
           datesDecoration: DatesDecoration(
-              datesBackgroundColor:
-                  selectedRangeBetweenDatesProperties?.datesDecoration?.datesBackgroundColor ??
-                      Theme.of(context).colorScheme.surfaceContainerHighest,
-              datesTextColor:
-                  selectedRangeBetweenDatesProperties?.datesDecoration?.datesTextColor ??
-                      Theme.of(context).colorScheme.onSurfaceVariant,
-              datesTextStyle:
-                  selectedRangeBetweenDatesProperties?.datesDecoration?.datesTextStyle ??
-                      const TextStyle(),
-              datesBorderColor:
-                  selectedRangeBetweenDatesProperties?.datesDecoration?.datesBorderColor ??
-                      Colors.transparent,
-              datesBorderRadius:
-                  selectedRangeBetweenDatesProperties?.datesDecoration?.datesBorderRadius ?? 12),
+              datesBackgroundColor: selectedRangeBetweenDatesProperties
+                      ?.datesDecoration?.datesBackgroundColor ??
+                  Theme.of(context).colorScheme.surfaceContainerHighest,
+              datesTextColor: selectedRangeBetweenDatesProperties
+                      ?.datesDecoration?.datesTextColor ??
+                  Theme.of(context).colorScheme.onSurfaceVariant,
+              datesTextStyle: selectedRangeBetweenDatesProperties
+                      ?.datesDecoration?.datesTextStyle ??
+                  const TextStyle(),
+              datesBorderColor: selectedRangeBetweenDatesProperties
+                      ?.datesDecoration?.datesBorderColor ??
+                  Colors.transparent,
+              datesBorderRadius: selectedRangeBetweenDatesProperties
+                      ?.datesDecoration?.datesBorderRadius ??
+                  12),
           disable: selectedRangeBetweenDatesProperties?.disable ?? false,
           hide: selectedRangeBetweenDatesProperties?.hide ?? false,
         ),
@@ -387,43 +478,56 @@ class CalendarProperties {
 
         /// Setting startDateOfCalendar value.
         startDateOfCalendar = startDateOfCalendar != null
-            ? DateTime.utc(
-                startDateOfCalendar.year, startDateOfCalendar.month, startDateOfCalendar.day)
+            ? DateTime.utc(startDateOfCalendar.year, startDateOfCalendar.month,
+                startDateOfCalendar.day)
             : DateTime.utc(0000, 1, 1),
 
         /// Setting endDateOfCalendar value.
         endDateOfCalendar = endDateOfCalendar != null
-            ? DateTime.utc(endDateOfCalendar.year, endDateOfCalendar.month, endDateOfCalendar.day)
+            ? DateTime.utc(endDateOfCalendar.year, endDateOfCalendar.month,
+                endDateOfCalendar.day)
             : DateTime.utc(9999, 1, 1),
 
         /// Setting dateSelectionMode value.
-        dateSelectionMode = dateSelectionMode ?? DatePickerSelectionMode.disable,
+        dateSelectionMode =
+            dateSelectionMode ?? DatePickerSelectionMode.disable,
 
         /// Setting disablePastDates value.
         disablePastDates = disablePastDates ?? false,
 
         /// Setting initialViewMonthDateTime value.
         initialViewMonthDateTime = initialViewMonthDateTime != null
-            ? DateTime.utc(initialViewMonthDateTime.year, initialViewMonthDateTime.month,
-                initialViewMonthDateTime.day)
-            : DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day),
+            ? DateTime.utc(initialViewMonthDateTime.year,
+                initialViewMonthDateTime.month, initialViewMonthDateTime.day)
+            : DateTime.utc(
+                DateTime.now().year, DateTime.now().month, DateTime.now().day),
 
         /// Setting currentDateOfCalendar value.
         currentDateOfCalendar = currentDateOfCalendar != null
-            ? DateTime.utc(
-                currentDateOfCalendar.year, currentDateOfCalendar.month, currentDateOfCalendar.day)
-            : DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day),
+            ? DateTime.utc(currentDateOfCalendar.year,
+                currentDateOfCalendar.month, currentDateOfCalendar.day)
+            : DateTime.utc(
+                DateTime.now().year, DateTime.now().month, DateTime.now().day),
 
         /// Setting datesForStreaks value.
-        datesForStreaks =
-            datesForStreaks?.map((e) => DateTime.utc(e.year, e.month, e.day)).toList() ?? [],
+        datesForStreaks = datesForStreaks
+                ?.map((e) => DateTime.utc(e.year, e.month, e.day))
+                .toList() ??
+            [],
+        datesForFreezedStreaks = datesForFreezedStreaks
+                ?.map((e) => DateTime.utc(e.year, e.month, e.day))
+                .toList() ??
+            [],
 
         /// Setting selectedDates value.
-        selectedDates =
-            selectedDates?.map((e) => DateTime.utc(e.year, e.month, e.day)).toList() ?? [],
+        selectedDates = selectedDates
+                ?.map((e) => DateTime.utc(e.year, e.month, e.day))
+                .toList() ??
+            [],
 
         /// Setting datePickerCalendarView value.
-        datePickerCalendarView = datePickerCalendarView ?? DatePickerCalendarView.monthView,
+        datePickerCalendarView =
+            datePickerCalendarView ?? DatePickerCalendarView.monthView,
 
         /// Setting startWeekday value.
         startWeekday = startWeekday ?? WeekDay.sunday,
@@ -463,11 +567,14 @@ class CalendarProperties {
           runtimeType == other.runtimeType &&
           weekdaysProperties == other.weekdaysProperties &&
           streakDatesProperties == other.streakDatesProperties &&
+          freezedStreakDatesProperties == other.freezedStreakDatesProperties &&
           currentDateProperties == other.currentDateProperties &&
           generalDatesProperties == other.generalDatesProperties &&
-          leadingTrailingDatesProperties == other.leadingTrailingDatesProperties &&
+          leadingTrailingDatesProperties ==
+              other.leadingTrailingDatesProperties &&
           selectedDatesProperties == other.selectedDatesProperties &&
-          selectedRangeBetweenDatesProperties == other.selectedRangeBetweenDatesProperties &&
+          selectedRangeBetweenDatesProperties ==
+              other.selectedRangeBetweenDatesProperties &&
           enableDenseViewForDates == other.enableDenseViewForDates &&
           enableDenseSplashForDates == other.enableDenseSplashForDates &&
           startDateOfCalendar == other.startDateOfCalendar &&
@@ -477,6 +584,7 @@ class CalendarProperties {
           initialViewMonthDateTime == other.initialViewMonthDateTime &&
           currentDateOfCalendar == other.currentDateOfCalendar &&
           datesForStreaks == other.datesForStreaks &&
+          datesForFreezedStreaks == other.datesForFreezedStreaks &&
           selectedDates == other.selectedDates &&
           onSelectedDates == other.onSelectedDates &&
           onCalendarViewDate == other.onCalendarViewDate &&
@@ -484,13 +592,15 @@ class CalendarProperties {
           startWeekday == other.startWeekday &&
           weekdaysSymbol == other.weekdaysSymbol &&
           monthsSymbol == other.monthsSymbol &&
-          calendarDatesSectionMaxHeight == other.calendarDatesSectionMaxHeight &&
+          calendarDatesSectionMaxHeight ==
+              other.calendarDatesSectionMaxHeight &&
           context == other.context;
 
   @override
   int get hashCode =>
       weekdaysProperties.hashCode ^
       streakDatesProperties.hashCode ^
+      freezedStreakDatesProperties.hashCode ^
       currentDateProperties.hashCode ^
       generalDatesProperties.hashCode ^
       leadingTrailingDatesProperties.hashCode ^
@@ -505,6 +615,7 @@ class CalendarProperties {
       initialViewMonthDateTime.hashCode ^
       currentDateOfCalendar.hashCode ^
       datesForStreaks.hashCode ^
+      datesForFreezedStreaks.hashCode ^
       selectedDates.hashCode ^
       onSelectedDates.hashCode ^
       onCalendarViewDate.hashCode ^

@@ -74,6 +74,12 @@ class _HomeState extends State<Home> {
                 DateTime(2024, 09, 3),
                 DateTime(2024, 09, 4),
               ],
+              datesForFreezedStreaks: [
+                DateTime(2024, 09, 5),
+                DateTime(2024, 09, 6),
+                DateTime(2024, 09, 7),
+                DateTime(2024, 09, 8),
+              ],
               headerProperties: HeaderProperties(
                 builder: (_, date, onNextMonth, onPreviousMonth) {
                   // Replace your builder here
@@ -101,6 +107,12 @@ class _HomeState extends State<Home> {
               streakDatesProperties: DatesProperties(
                 datesDecoration: DatesDecoration(
                   datesBackgroundColor: Colors.red,
+                  datesBorderColor: Colors.transparent,
+                ),
+              ),
+              freezedStreakDatesProperties: DatesProperties(
+                datesDecoration: DatesDecoration(
+                  datesBackgroundColor: Colors.blue,
                   datesBorderColor: Colors.transparent,
                 ),
               ),
