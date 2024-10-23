@@ -73,6 +73,14 @@ class PageControllerState extends ChangeNotifier {
     });
   }
 
+  void next(int step) {
+    _pageController.jumpToPage(_pageViewIndex + step);
+  }
+
+  void prev(int step) {
+    _pageController.jumpToPage(_pageViewIndex - step);
+  }
+
   // Update list and jump to the middle element
   void _next(int index) {
     if (datePickerCalendarView == DatePickerCalendarView.monthView) {

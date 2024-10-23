@@ -28,6 +28,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<DateTime> selectedDates = [];
+  late PageControllerState _pageControllerState;
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +36,36 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         elevation: 2,
         title: const Text("Calendar"),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              _pageControllerState.prev(2);
+            },
+            child: Container(
+              height: 50.0,
+              width: 50.0,
+              color: Colors.black,
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              _pageControllerState.next(2);
+            },
+            child: Container(
+              height: 50.0,
+              width: 50.0,
+              color: Colors.blue,
+            ),
+          ),
+        ],
       ),
       body: Center(
         child: ListView(
           children: [
             StreakCalendar(
+              controller: (controller) {
+                _pageControllerState = controller;
+              },
               enableDenseViewForDates: true,
               enableDenseSplashForDates: true,
               datesForStreaks: [
@@ -174,13 +200,16 @@ class _HomeState extends State<Home> {
                   november: "Nov",
                   december: "Dec"),
               weekdaysProperties: WeekdaysProperties(
-                generalWeekdaysDecoration: WeekdaysDecoration(weekdayTextColor: Colors.red),
+                generalWeekdaysDecoration:
+                    WeekdaysDecoration(weekdayTextColor: Colors.red),
                 sundayDecoration: WeekdaysDecoration(
                     weekdayTextColor: Colors.green,
-                    weekdayTextStyle: Theme.of(context).textTheme.headlineMedium),
+                    weekdayTextStyle:
+                        Theme.of(context).textTheme.headlineMedium),
                 saturdayDecoration: WeekdaysDecoration(
                     weekdayTextColor: Colors.green,
-                    weekdayTextStyle: Theme.of(context).textTheme.headlineMedium),
+                    weekdayTextStyle:
+                        Theme.of(context).textTheme.headlineMedium),
               ),
             ),
           ],

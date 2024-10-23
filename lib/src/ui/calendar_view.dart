@@ -6,20 +6,33 @@ import 'package:clean_calendar/src/ui/calendar_weekday_header_section.dart';
 import 'package:flutter/material.dart';
 
 class Calendar extends StatelessWidget {
-  const Calendar({super.key, required this.calendarProperties});
+  const Calendar({
+    super.key,
+    required this.calendarProperties,
+    this.controller,
+  });
 
   final CalendarProperties calendarProperties;
+  final Function(PageControllerState)? controller;
 
   @override
   Widget build(BuildContext context) {
-    return CalendarView(calendarProperties: calendarProperties);
+    return CalendarView(
+      calendarProperties: calendarProperties,
+      controller: controller,
+    );
   }
 }
 
 class CalendarView extends StatefulWidget {
-  const CalendarView({super.key, required this.calendarProperties});
+  const CalendarView({
+    super.key,
+    required this.calendarProperties,
+    this.controller,
+  });
 
   final CalendarProperties calendarProperties;
+  final Function(PageControllerState)? controller;
 
   @override
   State<CalendarView> createState() => _CalendarViewState();
@@ -32,6 +45,7 @@ class _CalendarViewState extends State<CalendarView> {
   void initState() {
     pageControllerState = PageControllerState(widget.calendarProperties)
       ..init();
+    widget.controller?.call(pageControllerState);
     super.initState();
   }
 
@@ -48,6 +62,7 @@ class _CalendarViewState extends State<CalendarView> {
       setState(() {
         pageControllerState = PageControllerState(widget.calendarProperties)
           ..init();
+        widget.controller?.call(pageControllerState);
       });
     }
     super.didUpdateWidget(oldWidget);

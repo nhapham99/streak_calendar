@@ -4,6 +4,8 @@ import 'package:clean_calendar/streak_calendar.dart';
 import 'package:clean_calendar/src/ui/calendar_view.dart';
 import 'package:flutter/material.dart';
 
+import 'state/page_controller.dart';
+
 class StreakCalendar extends StatelessWidget {
   /// - CleanCalendar, Shows a simple Calendar.
   const StreakCalendar({
@@ -31,6 +33,7 @@ class StreakCalendar extends StatelessWidget {
     this.weekdaysSymbol,
     this.monthsSymbol,
     this.calendarDatesSectionMaxHeight,
+    this.controller,
   });
 
   /// - datePickerCalendarView, It takes calendar view type.
@@ -113,9 +116,12 @@ class StreakCalendar extends StatelessWidget {
   /// If null, it will take the available height.
   final double? calendarDatesSectionMaxHeight;
 
+  final Function(PageControllerState)? controller;
+
   @override
   Widget build(BuildContext context) {
     return Calendar(
+      controller: controller,
       calendarProperties: CalendarProperties(
           datePickerCalendarView: datePickerCalendarView,
           weekdaysProperties: weekdaysProperties,
